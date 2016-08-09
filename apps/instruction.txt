@@ -1,0 +1,5 @@
+place
+
+<?php echo $this->getChildHtml('priceoffer') ?>
+
+to product_view

@@ -1,0 +1,94 @@
+<style>
+	#ul_offer {list-style: none}
+	#ul_offer textarea {height: 150px}
+	#form:not(.b_default_layout) [class*="col-"]:last-child {padding-left: 1em;}
+	#form:not(.b_default_layout) [class*="col-"]:last-child {padding-right: 1em;}
+	.product-container {margin: 0; width: 100%; padding: 0;}
+	.productOffer-image {float: left; width: 300px}
+	.productOffer-name {float: left}
+</style>
+
+<?php $_product=Mage::getModel("catalog/product")->load(Mage::app()->getRequest()->getParam('prod')) ?>
+<?php $_productName = $_product->getName() ?>
+<?php $_productPrice = $this->helper('core')->formatPrice($_product->getPrice(), false) ?>
+
+<script type="text/javascript">
+	var originalPrice = '<?php echo $_product->getPrice() ?>';
+	var ajaxPath = "<?php echo Mage::getBaseUrl() ?>";
+</script>
+
+<div class="page-title">
+    <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Product Information</h5>
+    <hr class="divider_bg m_bottom_25">
+</div>
+
+<div class="product-container">
+	<div class="productOffer-image">
+		<img style="box-shadow: 0px 0px 6px #b1b1b1; border-radius: 10px" src="<?php echo  Mage::helper('catalog/image')->init($_product, 'image')->resize(200,200); ?>">
+	</div>
+	<div class="productOffer-name">
+		<h3 style="margin: 11px 0; word-wrap: break-word"><?php echo $_productName ?></h3>
+		<h4>Price: <?php echo $_productPrice = $this->helper('core')->formatPrice($_product->getPrice(), false) ?> USD</h4>
+	</div>
+	<div class="clearer"></div>
+</div>
+<br><br>
+<div class="page-title">
+    <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Customer Information</h5>
+    <hr class="divider_bg m_bottom_25">
+</div>	
+<form id="form">
+<input type="hidden" value="<?php echo $_productName ?>" name="productName">
+<input type="hidden" value="<?php echo $_productPrice ?>" name="productPrice">
+<input type="hidden" value="<?php echo $_product->getId() ?>" name="product_id">
+<ul id="ul_offer">
+	<li class="row">
+		<div class="col-lg-4 col-md-4 col-sm-4 m_bottom_15">
+			<label for="priceOffer" class="second_font required d_inline_b m_bottom_5 clickable">Make an Offer ($ per unit)</label><br>
+			<input type="text" id="priceOffer" name="priceOffer" value="" title="Make us your best offer" class="tr_all w_full required-entry">        
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 m_bottom_15">
+			<label for="qtyOffer" class="second_font required d_inline_b m_bottom_5 clickable">Quantity</label><br>
+			<input type="text" id="qtyOffer" name="qtyOffer" value="" title="Quantity interested in" maxlength="2" class="tr_all w_full required-entry">
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 m_bottom_15">
+			<label for="zipcodeOffer" class="second_font required d_inline_b m_bottom_5 clickable">Shipping Zip</label><br>
+			<input type="text" id="zipcodeOffer" name="zipcodeOffer" value="" title="Shipping zip code" maxlength="10" class="tr_all w_full required-entry">
+		</div>
+	</li>
+	<li class="row">
+		<div class="col-lg-4 col-md-4 col-sm-4 m_bottom_15">
+			<label for="phoneOffer" class="second_font d_inline_b m_bottom_5 clickable">Phone #</label><br>
+			<input type="text" id="phoneOffer" name="phoneOffer" value="" title="Your contact phone number" class="tr_all w_full">
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 m_bottom_15">
+			<label for="emailOffer" class="second_font required d_inline_b m_bottom_5 clickable">Email Adress</label><br>
+			<input type="text" id="emailOffer" name="emailOffer" value="" title="You email address" class="tr_all w_full required-entry">
+		</div>
+	</li>
+	<li class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 m_bottom_15">
+			<label for="commentsInput" class="second_font d_inline_b m_bottom_5 clickable">Comments</label><br>
+			<textarea maxlength="250" placeholder="Include any special requests, instructions, or important product details here..." id="commentsInput" name="comments" class="tr_all w_full"></textarea>
+		</div>
+	</li>
+	<li class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 m_bottom_15">
+			<div id="offer-calc">
+				<div>
+					<h3>Your Offer</h3>
+					<h4></h4>
+				</div>
+				<div>
+					<div>99% off</div>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li class="row">
+		<div class="col-lg-2 col-md-2 col-sm-2 m_bottom_15" style="float: right">
+			<button data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" type="button" title="Submit Offer" class="button_type_2 d_block f_sm_none m_sm_bottom_3 t_align_c lbrown state_2 tr_all second_font fs_medium tt_uppercase f_left m_right_3 product_button button submitOffer"><span><span><i class="fa fa-lg"></i>Submit Offer</span></span></button>
+		</div>
+	</li>
+</ul>
+</form>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">   
+  <catalog_product_view translate="label">
+	<reference name="head">
+		<action method="addJs"><script>priceoffer/priceoffer.js</script></action>
+	</reference>
+	<reference name="content">   
+      <block type="catalog/product_view" name="priceoffer" as="priceoffer" template="priceoffer/priceoffer.phtml" />
+    </reference>   
+  </catalog_product_view>   
+</layout>   
+	
