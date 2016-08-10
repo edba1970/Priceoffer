@@ -13,6 +13,15 @@
 #offer-calc div:last-child > div {padding: 18px;border: 1px dashed #999;font-size: 1.6666em; font-weight: bold}
 .how-it-works a  {color: #fff; display: block;text-align: center;}
 
+.page-title {display: inline-block;text-align: left;width: 100%;}
+.tt_uppercase {text-transform: uppercase;}
+.fw_light {font-weight: 300;}
+
+a, .color_dark, .select_title::after, .color_dark_hover:hover, [class*="button_type"].black.state_2, .popup_container [class*="button_type"]:hover, [class*="button_type"].black:not(.state_2):hover {
+    color: #8C8C8C;
+}
+.m_bottom_13 {margin-bottom: 13px;}
+
 #offer_form #qtyOffer {text-align: center}
 .product-container {margin: 0 auto; width: 200px;padding: 18px 0}
 .msgConfirmation {width: 100%; text-align: left;padding: 18px; display: none}
